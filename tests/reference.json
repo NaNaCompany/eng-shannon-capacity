@@ -1,0 +1,43 @@
+{
+  "id": "E145",
+  "value": 3459431.6186372973,
+  "method": "Independent Python Decimal evaluation at 90 decimal digits; mathematical constants supplied to at least 85 digits. Expected numbers rounded once to IEEE-754 binary64. No JS imports.",
+  "cases": [
+    {
+      "name": "zero dB SNR gives one bit per second per hertz",
+      "values": {
+        "snr": 0
+      },
+      "expected": 1000000.0
+    },
+    {
+      "name": "negative SNR dB is supported",
+      "values": {
+        "snr": -10
+      },
+      "expected": 137503.52374993492
+    },
+    {
+      "name": "large SNR avoids exponential overflow",
+      "values": {
+        "snr": 4000
+      },
+      "expected": 1328771237.9549448
+    },
+    {
+      "name": "low SNR with large bandwidth remains representable",
+      "values": {
+        "b": 1e+200,
+        "snr": -4000
+      },
+      "expected": 1.4426950408889635e-200
+    },
+    {
+      "name": "positive capacity underflow rejected",
+      "values": {
+        "snr": -40000
+      },
+      "throws": true
+    }
+  ]
+}
